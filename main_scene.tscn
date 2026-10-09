@@ -2,7 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://co1n5ulcgrsmv" path="res://zombie.tscn" id="1_0f027"]
 [ext_resource type="PackedScene" uid="uid://dluy26mtg1qv8" path="res://vampire.tscn" id="1_gyfs4"]
+[ext_resource type="PackedScene" uid="uid://yua1co5s75ea" path="res://mixing_setup.tscn" id="1_nfk4m"]
 [ext_resource type="PackedScene" uid="uid://sgxlouu3b2pv" path="res://ghost.tscn" id="3_d5x1h"]
+[ext_resource type="Script" uid="uid://c1thwl4hblv5g" path="res://audio_player.gd" id="4_hq1ik"]
+[ext_resource type="AudioStream" uid="uid://bxhwalrmkdil4" path="res://assets/testTrack.ogg" id="5_nfk4m"]
+[ext_resource type="AudioStream" uid="uid://dq8yvokqj44on" path="res://assets/testTrack2.ogg" id="6_66tet"]
 
 [node name="MainScene" type="Node3D" unique_id=376405843]
 
@@ -45,6 +49,9 @@ transform = Transform3D(-0.7023572, 0.041059222, 0.7106396, -0.16372508, 0.96225
 light_energy = 9.808
 shadow_enabled = true
 
+[node name="MixingSetup" parent="rotate" unique_id=1274669568 instance=ExtResource("1_nfk4m")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.46, 0.6, -2.5)
+
 [node name="SpotLight3D2" type="SpotLight3D" parent="rotate" unique_id=1728711140]
 transform = Transform3D(0.819152, 0.49673182, 0.28678828, -0.099600516, -0.36921677, 0.92399067, 0.56486255, -0.7854531, -0.25296992, 0, 3.9, 0)
 light_energy = 6.679
@@ -55,29 +62,32 @@ spot_range = 5.496
 spot_attenuation = -0.93
 spot_angle = 24.55
 
-[node name="Node3D" type="Node3D" parent="rotate/SpotLight3D2" unique_id=1793809390]
-transform = Transform3D(0.72904533, -0.08864447, 0.5027277, 0.4420913, -0.32860294, -0.6990532, 0.25524154, 0.82235163, -0.22514322, 0.56352735, 1.5810134, -3.650617)
+[node name="Node3D" type="Node3D" parent="rotate" unique_id=1793809390]
+transform = Transform3D(0.8900001, -2.9802326e-08, 2.3979759e-08, -1.4901161e-08, 0.89, 0, 3.5624886e-08, 4.470348e-08, 0.89000005, 0.20000017, -0.11300039, -2.2371583e-07)
 
-[node name="AlbumCover" type="CSGBox3D" parent="rotate/SpotLight3D2/Node3D" unique_id=1681425624]
+[node name="AlbumCover" type="CSGBox3D" parent="rotate/Node3D" unique_id=1681425624]
 transform = Transform3D(0.78600234, 0.25035235, 0.056526423, 0.008180232, 0.9100448, -0.04144288, -0.6181689, 0.33036596, 0.07132499, 0.88439935, 1.8247186, -2.7799752)
 size = Vector3(0.8, 0.8, 1)
 
-[node name="Record3" type="CSGCylinder3D" parent="rotate/SpotLight3D2/Node3D/AlbumCover" unique_id=129532507]
+[node name="Record3" type="CSGCylinder3D" parent="rotate/Node3D/AlbumCover" unique_id=129532507]
 transform = Transform3D(0.7492291, 9.005796e-05, 0.033689126, -0.033706598, 5.69697e-05, 0.7492367, 0.04370618, -0.14999606, 0.03047669, -0.63, -0.004, 0.421)
 
-[node name="MilkCrate" type="CSGBox3D" parent="rotate/SpotLight3D2/Node3D" unique_id=1998730087]
+[node name="MilkCrate" type="CSGBox3D" parent="rotate/Node3D" unique_id=1998730087]
 transform = Transform3D(0.9063077, 0, 0.42261812, 0, 0.99999976, 0, -0.42261812, 0, 0.9063077, 0.9750301, 0.81235945, -2.6222372)
 size = Vector3(0.90000004, 1, 1)
 
-[node name="Turntables" type="CSGBox3D" parent="rotate/SpotLight3D2/Node3D" unique_id=1608737190]
+[node name="Turntables" type="CSGBox3D" parent="rotate/Node3D" unique_id=1608737190]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.6, -2.8000002)
+visible = false
 size = Vector3(1.87, 1, 1)
 
-[node name="Record1" type="CSGCylinder3D" parent="rotate/SpotLight3D2/Node3D" unique_id=1065880009]
+[node name="Record1" type="CSGCylinder3D" parent="rotate/Node3D" unique_id=1065880009]
 transform = Transform3D(0.75, 0, 0, 0, 0.015, 0, 0, 0, 0.75, -0.2, 1.2, -2.7)
+visible = false
 
-[node name="Record2" type="CSGCylinder3D" parent="rotate/SpotLight3D2/Node3D" unique_id=1670295587]
+[node name="Record2" type="CSGCylinder3D" parent="rotate/Node3D" unique_id=1670295587]
 transform = Transform3D(0.75, 0, 0, 0, 0.015, 0, 0, 0, 0.75, -1.1, 1.2, -2.7)
+visible = false
 
 [node name="monsters" type="Node3D" parent="rotate" unique_id=243068077]
 transform = Transform3D(0.74, 0, 0, 0, 0.74, 0, 0, 0, 0.74, 0, 0, 0)
@@ -86,9 +96,28 @@ transform = Transform3D(0.74, 0, 0, 0, 0.74, 0, 0, 0, 0.74, 0, 0, 0)
 transform = Transform3D(0.21650633, 0, -0.125, 0, 0.25, 0, 0.125, 0, 0.21650633, -2.5513513, 0, -1.875593e-07)
 
 [node name="Zombie" parent="rotate/monsters" unique_id=1862887576 instance=ExtResource("1_0f027")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -9.934285e-09, 0, 0.13513514)
 
 [node name="Ghost" parent="rotate/monsters" unique_id=1453662967 instance=ExtResource("3_d5x1h")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.2756757, 0, 0.4999999)
 
 [node name="Ghost2" parent="rotate/monsters" unique_id=2102674281 instance=ExtResource("3_d5x1h")]
 transform = Transform3D(0.19151114, 0, -0.1606969, 0, 0.25, 0, 0.1606969, 0, 0.19151114, -2.0864866, -0.40540543, -2.6081092)
+
+[node name="Vampire2" parent="rotate/monsters" unique_id=977706263 instance=ExtResource("1_gyfs4")]
+transform = Transform3D(0.24904867, 0, -0.021788942, 0, 0.25, 0, 0.021788942, 0, 0.24904867, 0.69189215, 0, 0.8108109)
+
+[node name="Zombie2" parent="rotate/monsters" unique_id=519015862 instance=ExtResource("1_0f027")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.081081, 0, -2.1621623)
+
+[node name="AudioPlayer" type="Node" parent="." unique_id=331485969 node_paths=PackedStringArray("mixing_board")]
+script = ExtResource("4_hq1ik")
+mixing_board = NodePath("../rotate/MixingSetup")
+
+[node name="Thriller" type="AudioStreamPlayer3D" parent="AudioPlayer" unique_id=1416652182]
+stream = ExtResource("5_nfk4m")
+parameters/looping = true
+
+[node name="Ghostbusters" type="AudioStreamPlayer3D" parent="AudioPlayer" unique_id=272485095]
+stream = ExtResource("6_66tet")
+parameters/looping = true
