@@ -48,10 +48,18 @@ So I started thinking about a game I could do that's manageably challenging and 
 
 Here I roughed in the shapes and initial lighting in Godot to figure out the sizing and camera frame, with dance floor monsters billboarded as 3d sprites. You can see the room, some dancing monsters, your turntable, some records, the milk crate that will hold your albums, an album in "selected" state, and some initial lighting. 
 
+##### End of day: 
+I got the turntables turning, got the mixing slider working, and got the music hooked up to the mixing slider. 
+
 ##### Next steps:
 
-[ ] Get audio playing when you click on one of the records
-[ ] Make rough loop animation for the monsters
-[ ] Make the ghosts react when player plays Ghostbusters
-[ ] Make placeholder turntable scene with mixing slider
+[ ] Figure out a design for the turntables to use records
+[ ] Add record crate interactivity (flip through albums, select album)
+[ ] Make rough loop animation for the monsters dancing
+[ ] Make the ghosts react negatively when player plays Ghostbusters
+[ ] Add camera active/dead zone to change the view a little when the mouse gets to the edges
+[ ] Make some goofy songs for the albums
+[ ] Make album covers
+[ ] Design the room
+[ ] Model and texture the props/room in Blender
 
