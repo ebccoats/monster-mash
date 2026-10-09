@@ -94,21 +94,30 @@ transform = Transform3D(0.74, 0, 0, 0, 0.74, 0, 0, 0, 0.74, 0, 0, 0)
 
 [node name="Vampire" parent="rotate/monsters" unique_id=1880322960 instance=ExtResource("1_gyfs4")]
 transform = Transform3D(0.21650633, 0, -0.125, 0, 0.25, 0, 0.125, 0, 0.21650633, -2.5513513, 0, -1.875593e-07)
+dance_amplitude = 0.02
 
 [node name="Zombie" parent="rotate/monsters" unique_id=1862887576 instance=ExtResource("1_0f027")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -9.934285e-09, 0, 0.13513514)
+dance_frequency = 15.0
+dance_amplitude = 0.1
 
 [node name="Ghost" parent="rotate/monsters" unique_id=1453662967 instance=ExtResource("3_d5x1h")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.2756757, 0, 0.4999999)
 
 [node name="Ghost2" parent="rotate/monsters" unique_id=2102674281 instance=ExtResource("3_d5x1h")]
 transform = Transform3D(0.19151114, 0, -0.1606969, 0, 0.25, 0, 0.1606969, 0, 0.19151114, -2.0864866, -0.40540543, -2.6081092)
+dance_frequency = 6.0
+dance_amplitude = 0.1
 
 [node name="Vampire2" parent="rotate/monsters" unique_id=977706263 instance=ExtResource("1_gyfs4")]
 transform = Transform3D(0.24904867, 0, -0.021788942, 0, 0.25, 0, 0.021788942, 0, 0.24904867, 0.69189215, 0, 0.8108109)
+dance_frequency = 3.0
+dance_amplitude = 0.05
 
 [node name="Zombie2" parent="rotate/monsters" unique_id=519015862 instance=ExtResource("1_0f027")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.081081, 0, -2.1621623)
+dance_frequency = 8.0
+dance_amplitude = 0.01
 
 [node name="AudioPlayer" type="Node" parent="." unique_id=331485969 node_paths=PackedStringArray("mixing_board")]
 script = ExtResource("4_hq1ik")

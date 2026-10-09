@@ -2,19 +2,25 @@ extends Node3D
 
 @onready var sprite: Sprite3D = $Sprite3D
 
+@export var dance_frequency: float = 10.0
+@export var dance_amplitude: float = 0.5
+
+var dance_time: float = 0.0
+var origin: Vector3
+
 var neutral_basis: Basis
-var frame_counter = 0
+var frame_counter = 0.0
 
 func _ready() -> void:
-	neutral_basis = basis
+	origin = global_position
 
+func _process(delta: float) -> void:
+	dance_time += delta
+	dance(dance_time)
 
-func _physics_process(delta: float) -> void:
-	basis = neutral_basis
-	frame_counter += frame_counter
-	if dance: 
-		rotate_z(5.0)
-		dance = false
-	else:
-		rotate_z(-5.0)
-		dance = true
+	
+
+func dance(time: float) -> void:
+	var dance_position = global_transform.origin
+	global_position.y = origin.y + sin(time * dance_frequency) * dance_amplitude
+	global_position.x = origin.x + cos(time * dance_frequency / 2) * dance_amplitude
