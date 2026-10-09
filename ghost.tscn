@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://sgxlouu3b2pv"]
+
+[ext_resource type="Texture2D" uid="uid://bxwu8dj5rognn" path="res://assets/ghostbboard.png" id="1_v5pp4"]
+
+[node name="Ghost" type="Node3D" unique_id=1880322960]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1176578024]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, 0)
+texture = ExtResource("1_v5pp4")

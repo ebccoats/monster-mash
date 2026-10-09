@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dluy26mtg1qv8"]
+
+[ext_resource type="Texture2D" uid="uid://ctmctuvehlv8p" path="res://assets/vampirebboard.png" id="1_73ghq"]
+
+[node name="Vampire" type="Node3D" unique_id=1880322960]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1176578024]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1, 0)
+texture = ExtResource("1_73ghq")
