@@ -1,14 +1,50 @@
 [gd_scene format=3 uid="uid://bvehhx2jd212i"]
 
 [ext_resource type="PackedScene" uid="uid://co1n5ulcgrsmv" path="res://zombie.tscn" id="1_0f027"]
+[ext_resource type="PackedScene" uid="uid://dxh5rsql28gvg" path="res://album.tscn" id="1_66tet"]
 [ext_resource type="PackedScene" uid="uid://dluy26mtg1qv8" path="res://vampire.tscn" id="1_gyfs4"]
 [ext_resource type="PackedScene" uid="uid://yua1co5s75ea" path="res://mixing_setup.tscn" id="1_nfk4m"]
 [ext_resource type="PackedScene" uid="uid://sgxlouu3b2pv" path="res://ghost.tscn" id="3_d5x1h"]
 [ext_resource type="Script" uid="uid://c1thwl4hblv5g" path="res://audio_player.gd" id="4_hq1ik"]
 [ext_resource type="AudioStream" uid="uid://bxhwalrmkdil4" path="res://assets/testTrack.ogg" id="5_nfk4m"]
 [ext_resource type="AudioStream" uid="uid://dq8yvokqj44on" path="res://assets/testTrack2.ogg" id="6_66tet"]
+[ext_resource type="Script" uid="uid://c0otljvy2hw3n" path="res://input_handler.gd" id="9_7ycvg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ip871"]
+size = Vector3(0.9, 1, 1)
 
 [node name="MainScene" type="Node3D" unique_id=376405843]
+
+[node name="Records" type="Node3D" parent="." unique_id=199046445]
+transform = Transform3D(0.80661386, 0, 0.37613022, 0, 0.8899999, 0, -0.37613022, 0, 0.80661386, -1.0530899, 0.15710099, 2.3429801)
+
+[node name="AlbumHoverTarget" type="Marker3D" parent="Records" unique_id=1110203330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0637176, 1.2059524, 0.3677777)
+
+[node name="MilkCrate" type="MeshInstance3D" parent="Records" unique_id=199251372]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5215243, 0)
+mesh = SubResource("BoxMesh_ip871")
+
+[node name="Albums" type="Node3D" parent="Records" unique_id=1015812376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013360739, 0.20008697, 3.5762787e-07)
+
+[node name="Album1" parent="Records/Albums" unique_id=1469940390 instance=ExtResource("1_66tet")]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0.23)
+
+[node name="Album2" parent="Records/Albums" unique_id=50826836 instance=ExtResource("1_66tet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.14)
+
+[node name="Album3" parent="Records/Albums" unique_id=410026898 instance=ExtResource("1_66tet")]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, 0.05)
+
+[node name="Album4" parent="Records/Albums" unique_id=53042967 instance=ExtResource("1_66tet")]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, -0.04)
+
+[node name="Album5" parent="Records/Albums" unique_id=760366331 instance=ExtResource("1_66tet")]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, -0.13)
+
+[node name="Album6" parent="Records/Albums" unique_id=1903141071 instance=ExtResource("1_66tet")]
+transform = Transform3D(1, 0, 0, 0, 0.9659257, 0.258819, 0, -0.258819, 0.9659257, 0, 0, -0.22312802)
 
 [node name="rotate" type="Node3D" parent="." unique_id=1804425412]
 transform = Transform3D(-1, 0, -7.351371e-08, 0, 1, 0, 7.351371e-08, 0, -1, 0, 0, 0)
@@ -64,17 +100,27 @@ spot_angle = 24.55
 
 [node name="Node3D" type="Node3D" parent="rotate" unique_id=1793809390]
 transform = Transform3D(0.8900001, -2.9802326e-08, 2.3979759e-08, -1.4901161e-08, 0.89, 0, 3.5624886e-08, 4.470348e-08, 0.89000005, 0.20000017, -0.11300039, -2.2371583e-07)
+visible = false
 
 [node name="AlbumCover" type="CSGBox3D" parent="rotate/Node3D" unique_id=1681425624]
-transform = Transform3D(0.78600234, 0.25035235, 0.056526423, 0.008180232, 0.9100448, -0.04144288, -0.6181689, 0.33036596, 0.07132499, 0.88439935, 1.8247186, -2.7799752)
+transform = Transform3D(0.78600234, 0.25035235, 0.056526423, 0.008180231, 0.9100448, -0.04144288, -0.61816895, 0.330366, 0.071325, 0.8843992, 1.8247185, -2.7799754)
+visible = false
 size = Vector3(0.8, 0.8, 1)
 
 [node name="Record3" type="CSGCylinder3D" parent="rotate/Node3D/AlbumCover" unique_id=129532507]
-transform = Transform3D(0.7492291, 9.005796e-05, 0.033689126, -0.033706598, 5.69697e-05, 0.7492367, 0.04370618, -0.14999606, 0.03047669, -0.63, -0.004, 0.421)
+transform = Transform3D(0.7492291, 9.005703e-05, 0.033689126, -0.03370659, 5.6969235e-05, 0.7492367, 0.043706417, -0.14999604, 0.03047645, -0.63, -0.0039999485, 0.42099762)
 
 [node name="MilkCrate" type="CSGBox3D" parent="rotate/Node3D" unique_id=1998730087]
 transform = Transform3D(0.9063077, 0, 0.42261812, 0, 0.99999976, 0, -0.42261812, 0, 0.9063077, 0.9750301, 0.81235945, -2.6222372)
 size = Vector3(0.90000004, 1, 1)
+
+[node name="AlbumCover2" type="CSGBox3D" parent="rotate/Node3D/MilkCrate" unique_id=840783220]
+transform = Transform3D(0.9727757, 0.09610428, 0.021088172, 0, 0.9099612, -0.041469347, -0.23174785, 0.40340355, 0.08851889, -0.015476704, 1.0123594, -0.18126225)
+visible = false
+size = Vector3(0.8, 0.8, 1)
+
+[node name="Record3" type="CSGCylinder3D" parent="rotate/Node3D/MilkCrate/AlbumCover2" unique_id=1424833142]
+transform = Transform3D(0.7492291, 9.005703e-05, 0.033689126, -0.03370659, 5.6969235e-05, 0.7492367, 0.043706417, -0.14999604, 0.03047645, -0.63, -0.0039999485, 0.42099762)
 
 [node name="Turntables" type="CSGBox3D" parent="rotate/Node3D" unique_id=1608737190]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.6, -2.8000002)
@@ -102,7 +148,7 @@ dance_frequency = 15.0
 dance_amplitude = 0.1
 
 [node name="Ghost" parent="rotate/monsters" unique_id=1453662967 instance=ExtResource("3_d5x1h")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.2756757, 0, 0.4999999)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.2756757, 0.06630276, 0.4999999)
 
 [node name="Ghost2" parent="rotate/monsters" unique_id=2102674281 instance=ExtResource("3_d5x1h")]
 transform = Transform3D(0.19151114, 0, -0.1606969, 0, 0.25, 0, 0.1606969, 0, 0.19151114, -2.0864866, -0.40540543, -2.6081092)
@@ -130,3 +176,7 @@ parameters/looping = true
 [node name="Ghostbusters" type="AudioStreamPlayer3D" parent="AudioPlayer" unique_id=272485095]
 stream = ExtResource("6_66tet")
 parameters/looping = true
+
+[node name="Node" type="Node" parent="." unique_id=961566786 node_paths=PackedStringArray("album")]
+script = ExtResource("9_7ycvg")
+album = NodePath("../Records/Albums/Album2")

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dxh5rsql28gvg"]
+
+[ext_resource type="PackedScene" uid="uid://c7b4qguqrnjnn" path="res://record.tscn" id="1_5p2gi"]
+[ext_resource type="Script" uid="uid://co3phnw6hrgek" path="res://scripts/album.gd" id="1_uur71"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ip871"]
+size = Vector3(0.8, 0.8, 0.05)
+
+[node name="AlbumCover" type="Node3D" unique_id=703440192]
+script = ExtResource("1_uur71")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1852854804]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("BoxMesh_ip871")
+
+[node name="Record" parent="." unique_id=990382905 instance=ExtResource("1_5p2gi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)

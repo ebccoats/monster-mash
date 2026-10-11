@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bubosrvbcrigu"]
+
+[ext_resource type="PackedScene" uid="uid://dxh5rsql28gvg" path="res://album.tscn" id="1_4mcao"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ip871"]
+size = Vector3(0.9, 1, 1)
+
+[node name="Records" type="Node3D" unique_id=199046445]
+transform = Transform3D(0.89, 0, 0, 0, 0.89, 0, 0, 0, 0.89, 0, 0, 0)
+
+[node name="MilkCrate" type="MeshInstance3D" parent="." unique_id=199251372]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5215243, 0)
+mesh = SubResource("BoxMesh_ip871")
+
+[node name="Albums" type="Node3D" parent="." unique_id=1015812376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013360426, 0.31441283, 0)
+
+[node name="Album1" parent="Albums" unique_id=1469940390 instance=ExtResource("1_4mcao")]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0.23)
+
+[node name="Album2" parent="Albums" unique_id=50826836 instance=ExtResource("1_4mcao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.14)
+
+[node name="Album3" parent="Albums" unique_id=410026898 instance=ExtResource("1_4mcao")]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, 0.05)
+
+[node name="Album4" parent="Albums" unique_id=53042967 instance=ExtResource("1_4mcao")]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, -0.04)
+
+[node name="Album5" parent="Albums" unique_id=760366331 instance=ExtResource("1_4mcao")]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, -0.13)
+
+[node name="Album6" parent="Albums" unique_id=1903141071 instance=ExtResource("1_4mcao")]
+transform = Transform3D(1, 0, 0, 0, 0.9659257, 0.258819, 0, -0.258819, 0.9659257, 0, 0, -0.22312802)
+
+[node name="AlbumHoverTarget" type="Marker3D" parent="." unique_id=1384919268]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.027948141, 1.1796833, 0.37451303)
