@@ -127,23 +127,39 @@ Also, in order to see if scrolling through the albums is working, I need to be a
 
 ![](./assets/milkcrate.png)
 
+transparent because I didn't set the texture transparency to "alpha scissor." Fixed when I did that.
+
 I got that working! There's some weird interrupt stuff happening sometimes but I'm not sure what the right approach to locking off interaction is.
 
 ##### Put record onto turntable
 
 I'll just teleport the record onto and off of the turntable. What happens to the album covers? I think they should teleport too. 
 
+##### Add record label handling and album cover handling
+
+Added editor-level handling for album cover 3d sprites and record label 3d sprites. The album object accepts textures and will populate them on itself and its record.
+
+##### Add more monsters
+
+Added a skeleton and a wolfman.
+
+##### Think about interaction on Rcade
+
+I'll need to do an outline shader for the Rcade version of the game, because you can't use the mouse to click where you want. You have to scroll through with the joystick, so it needs to be clear what element is active. I found a [tutorial from CrookedSmile on Youtube](https://www.youtube.com/watch?v=Wxz4X4yKC9Q) but I'm not sure if it will work on the entire group (milk crate and albums as a unit)? I guess just the milk crate would be fine. I was worried about the shader acting weird because of the holes in the milk crate and then I remembered the milk crate doesn't have holes, it's just a cube with transparency in the texturing. 
+
+##### Next up:
+
+I need to model the turntable station in Blender.
+
 ##### Next steps:
 
-[ ] Scroll through the records
-[ ] Figure out a design for the turntables to use records
-[ ] Make rough loop animation for the monsters dancing
-[ ] Make the ghosts react negatively when player plays Ghostbusters
-[ ] Add camera active/dead zone to change the view a little when the mouse gets to the edges
-[ ] Make some goofy songs for the albums
-[ ] Figure out how to get all the songs on 120 bpm in Ableton
-[ ] Prevent the songs from starting to play off-beat 
-[ ] Make album covers in aseprite
-[ ] Design the room & lighting
-[ ] Model and texture the props/room in Blender/aseprite
-[ ] Add more monsters (skeletons and wolfmen)
+- [ ] Figure out a design for the turntables to use records
+- [ ] Make rough loop animation for the monsters dancing
+- [ ] Make the ghosts react negatively when player plays Ghostbusters
+- [ ] Add camera active/dead zone to change the view a little when the mouse gets to the edges
+- [ ] Make some goofy songs for the albums
+- [ ] Figure out how to get all the songs on 120 bpm in Ableton
+- [ ] Prevent the songs from starting to play off-beat 
+- [ ] Make album covers in aseprite
+- [ ] Design the room & lighting
+- [ ] Model and texture the props/room in Blender/aseprite

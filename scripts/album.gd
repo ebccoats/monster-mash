@@ -3,6 +3,10 @@ extends Node3D
 @onready var origin_position: Vector3 = position
 @onready var record = $Record
 
+@export var label_sprite: Texture2D
+@export var album_cover: Texture2D
+@export var audio_player: AudioStreamPlayer3D
+
 var is_ready: bool = true
 var state: State
 var height: float
@@ -29,6 +33,15 @@ func _ready() -> void:
 
 	hover_marker = find_parent("Records").get_node("AlbumHoverTarget")
 	prints("hover target", hover_marker)
+
+	if label_sprite:
+		var record_label: Sprite3D = record.get_node("Sprite3D")
+		record_label.texture = label_sprite
+
+	if album_cover:
+		var album_cover_image: Sprite3D = $Sprite3D
+		album_cover_image.texture = album_cover
+
 
 
 func interact() -> void:

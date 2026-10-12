@@ -5,10 +5,18 @@
 [ext_resource type="PackedScene" uid="uid://dluy26mtg1qv8" path="res://vampire.tscn" id="1_gyfs4"]
 [ext_resource type="PackedScene" uid="uid://yua1co5s75ea" path="res://mixing_setup.tscn" id="1_nfk4m"]
 [ext_resource type="PackedScene" uid="uid://oygh7wtw1uuw" path="res://milkcrate.tscn" id="1_wr18j"]
+[ext_resource type="Texture2D" uid="uid://bxwu8dj5rognn" path="res://assets/ghostbboard.png" id="3_42l1d"]
 [ext_resource type="PackedScene" uid="uid://sgxlouu3b2pv" path="res://ghost.tscn" id="3_d5x1h"]
+[ext_resource type="Texture2D" uid="uid://de2542kt4ws47" path="res://assets/album_cover2.png" id="4_2jcla"]
+[ext_resource type="PackedScene" uid="uid://cblq1kmi4xfka" path="res://wolfman.tscn" id="4_671wp"]
 [ext_resource type="Script" uid="uid://c1thwl4hblv5g" path="res://audio_player.gd" id="4_hq1ik"]
+[ext_resource type="PackedScene" uid="uid://cga2crgvovmff" path="res://skeleton.tscn" id="4_mo76n"]
+[ext_resource type="Texture2D" uid="uid://d203edj5cpx4m" path="res://assets/album-cover3.png" id="5_m35m6"]
 [ext_resource type="AudioStream" uid="uid://bxhwalrmkdil4" path="res://assets/testTrack.ogg" id="5_nfk4m"]
 [ext_resource type="AudioStream" uid="uid://dq8yvokqj44on" path="res://assets/testTrack2.ogg" id="6_66tet"]
+[ext_resource type="Texture2D" uid="uid://48kmgjpmx7xe" path="res://assets/album-cover4.png" id="6_u0ygc"]
+[ext_resource type="Texture2D" uid="uid://dn4qkc40b5qy7" path="res://assets/album-cover5.png" id="7_7th4q"]
+[ext_resource type="Texture2D" uid="uid://byu7gqu5s7ih5" path="res://assets/album-cover6.png" id="8_6jybn"]
 [ext_resource type="Script" uid="uid://c0otljvy2hw3n" path="res://input_handler.gd" id="9_7ycvg"]
 [ext_resource type="Script" uid="uid://dv13euq2jcpps" path="res://scripts/album_handler.gd" id="11_qwutr"]
 
@@ -39,18 +47,24 @@ transform = Transform3D(1, 0, 0, 0, 0.9659258, -0.25881904, 0, 0.25881904, 0.965
 
 [node name="Album2" parent="Records/Albums" unique_id=50826836 instance=ExtResource("1_66tet")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.14)
+label_sprite = ExtResource("3_42l1d")
+album_cover = ExtResource("4_2jcla")
 
 [node name="Album3" parent="Records/Albums" unique_id=410026898 instance=ExtResource("1_66tet")]
 transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, 0.05)
+album_cover = ExtResource("5_m35m6")
 
 [node name="Album4" parent="Records/Albums" unique_id=53042967 instance=ExtResource("1_66tet")]
 transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, -0.04)
+album_cover = ExtResource("6_u0ygc")
 
 [node name="Album5" parent="Records/Albums" unique_id=760366331 instance=ExtResource("1_66tet")]
 transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, -0.13)
+album_cover = ExtResource("7_7th4q")
 
 [node name="Album6" parent="Records/Albums" unique_id=1903141071 instance=ExtResource("1_66tet")]
 transform = Transform3D(1, 0, 0, 0, 0.9659257, 0.258819, 0, -0.258819, 0.9659257, 0, 0, -0.22312802)
+album_cover = ExtResource("8_6jybn")
 
 [node name="rotate" type="Node3D" parent="." unique_id=1804425412]
 transform = Transform3D(-1, 0, -7.351371e-08, 0, 1, 0, 7.351371e-08, 0, -1, 0, 0, 0)
@@ -112,6 +126,7 @@ spot_angle = 24.55
 
 [node name="Node3D" type="Node3D" parent="rotate" unique_id=1793809390]
 transform = Transform3D(0.8900001, -2.9802326e-08, 2.3979759e-08, -1.4901161e-08, 0.89, 0, 3.5624886e-08, 4.470348e-08, 0.89000005, 0.20000017, -0.11300039, -2.2371583e-07)
+visible = false
 
 [node name="AlbumCover" type="CSGBox3D" parent="rotate/Node3D" unique_id=1681425624]
 transform = Transform3D(0.9499296, 0.30681303, 0.0059151356, -0.21480556, 0.7787087, -0.058946665, -0.22691803, 0.54724616, 0.080562465, 0.25456202, 1.0623977, -3.5630622)
@@ -159,7 +174,16 @@ visible = false
 [node name="monsters" type="Node3D" parent="rotate" unique_id=243068077]
 transform = Transform3D(0.74, 0, 0, 0, 0.74, 0, 0, 0, 0.74, 0, 0, 0)
 
-[node name="Vampire" parent="rotate/monsters" unique_id=1880322960 instance=ExtResource("1_gyfs4")]
+[node name="Skeleton" parent="rotate/monsters" unique_id=1880322960 instance=ExtResource("4_mo76n")]
+transform = Transform3D(0.20735745, 0, 0.13965273, 0, 0.25, 0, -0.13965273, 0, 0.20735745, 1.5372716, 0.28067252, 1.130105e-07)
+dance_frequency = 2.0
+dance_amplitude = 0.3
+
+[node name="Wolfman" parent="rotate/monsters" unique_id=755586841 instance=ExtResource("4_671wp")]
+transform = Transform3D(0.19275708, 0, -0.15920022, 0, 0.25, 0, 0.15920022, 0, 0.19275708, -3.2955782, 0, -2.4227018e-07)
+dance_amplitude = 0.05
+
+[node name="Vampire" parent="rotate/monsters" unique_id=516019650 instance=ExtResource("1_gyfs4")]
 transform = Transform3D(0.21650633, 0, -0.125, 0, 0.25, 0, 0.125, 0, 0.21650633, -2.5513513, 0, -1.875593e-07)
 dance_amplitude = 0.02
 
@@ -182,7 +206,7 @@ dance_frequency = 3.0
 dance_amplitude = 0.05
 
 [node name="Zombie2" parent="rotate/monsters" unique_id=519015862 instance=ExtResource("1_0f027")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.081081, 0, -2.1621623)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.72705203, 0, -2.1621623)
 dance_frequency = 8.0
 dance_amplitude = 0.01
 

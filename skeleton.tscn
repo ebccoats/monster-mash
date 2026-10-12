@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cga2crgvovmff"]
+
+[ext_resource type="Script" uid="uid://dee8eaqpkwktu" path="res://dance_monster.gd" id="1_plk42"]
+[ext_resource type="Texture2D" uid="uid://bwkolo036u8pa" path="res://assets/skeletonboard.png" id="2_plk42"]
+
+[node name="Skeleton" type="Node3D" unique_id=1880322960]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+script = ExtResource("1_plk42")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1176578024]
+transform = Transform3D(0.98508894, 0.17204578, 0, -0.17204578, 0.98508894, 0, 0, 0, 1, 0, 3.9879541, 0)
+shaded = true
+alpha_cut = 2
+texture = ExtResource("2_plk42")

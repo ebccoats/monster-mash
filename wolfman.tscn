@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cblq1kmi4xfka"]
+
+[ext_resource type="Script" uid="uid://dee8eaqpkwktu" path="res://dance_monster.gd" id="1_13cov"]
+[ext_resource type="Texture2D" uid="uid://bbkys16udcw2o" path="res://assets/wolfmanboard.png" id="2_13cov"]
+
+[node name="Wolfman" type="Node3D" unique_id=1880322960]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+script = ExtResource("1_13cov")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1176578024]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1013803, 0)
+shaded = true
+alpha_cut = 2
+texture = ExtResource("2_13cov")
