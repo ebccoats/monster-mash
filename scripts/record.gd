@@ -9,6 +9,8 @@ var target_position_local: Vector3
 var target_position_global: Vector3
 var speed: float = 5.0
 
+@onready var origin_position = position
+
 enum State {
 	SLEEVED,
 	ROLLED_OUT,
@@ -34,7 +36,10 @@ func interact() -> void:
 			tween.tween_property(self, "position", target_position_local, 1.0)\
 				.set_trans(Tween.TRANS_QUART)\
 				.set_ease(Tween.EASE_IN_OUT)
-			tween.tween_callback(func(): updateState(State.ROLLED_OUT))
+			tween.tween_callback(func(): 
+				updateState(State.ROLLED_OUT)
+				is_ready = true
+				)
 		
 		if state == State.ROLLED_OUT:
 			# unparent from album, parent to targeted turntable
@@ -44,19 +49,20 @@ func interact() -> void:
 			# pass to parent turntable
 			return
 
-func interact_away() -> void:
+func return_to_sleeve() -> void:
 	if is_ready:
 		if state == State.ROLLED_OUT:
-			var aabb = $MeshInstance3D.get_aabb()
-			var size_x = aabb.size.x
-			var target_offset = size_x - (size_x / 4)
-			target_position_local = position - Vector3(target_offset, 0, 0)
+			prints("album asked to return to sleeve")
 			is_ready = false
-			state = State.PLAYING # not-ready PLAYING means return to album cover and deactivate self
+			var tween = create_tween()
+			tween.tween_property(self, "position", origin_position, 0.1)
+			tween.tween_callback(func(): 
+				updateState(State.SLEEVED)
+				visible = false
+				is_ready = true
+			)
 
-		if state == State.PLAYING:
-			# go back into album cover, unparent from turntable, parent to album cover
-			return
+	
 
 
 func _process(delta: float) -> void:

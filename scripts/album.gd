@@ -43,15 +43,70 @@ func interact() -> void:
 					.set_trans(Tween.TRANS_BACK)\
 					.set_ease(Tween.EASE_OUT)
 
-
 			var target_euler = Vector3(deg_to_rad(-24.5), deg_to_rad(13.4), 0)
-			# TODO: Need to add a marker in the scene for the album to hit, so all the records will arrive at the same spot
 			var target_quat = Quaternion.from_euler(target_euler)
 			var tween2 = get_tree().create_tween()
+			tween2.tween_interval(0.4)
 			tween2.tween_property(self, "quaternion", target_quat, 1.2)\
 					.set_trans(Tween.TRANS_BACK)\
 					.set_ease(Tween.EASE_OUT)
 			tween2.tween_callback(func(): updateState(State.FLOATING))
+
+func tilt_neg() -> void:
+	if state == State.UPRIGHT && is_ready:
+		is_ready = false
+		var tween = create_tween()
+		tween.set_parallel()
+		tween.tween_property(self, "rotation", rotation + Vector3(deg_to_rad(-15), 0, 0), 0.2)
+		tween.tween_property(self, "position", origin_position, 0.2)
+		tween.tween_callback(func(): 
+			updateState(State.TILTED_NEGATIVE)
+			is_ready = true
+			)
+
+func tilt_pos() -> void:
+	if state == State.UPRIGHT && is_ready:
+		is_ready = false
+		var tween = create_tween()
+		tween.set_parallel()
+		tween.tween_property(self, "rotation", rotation + Vector3(deg_to_rad(15), 0, 0), 0.2)
+		tween.tween_property(self, "position", origin_position, 0.2)
+		tween.tween_callback(func(): 
+			updateState(State.TILTED_POSITIVE)
+			is_ready = true
+			)
+
+func upright() -> void:
+	if state == State.TILTED_POSITIVE or state == State.TILTED_NEGATIVE && is_ready:
+		is_ready = false
+		var tween = create_tween()
+		tween.set_parallel()
+		tween.tween_property(self, "rotation", Vector3(0, 0, 0), 0.2)
+		tween.tween_property(self, "position", position + Vector3(0, height / 3, 0), 0.2)
+		tween.tween_callback(func(): 
+			updateState(State.UPRIGHT)
+			is_ready = true
+			)
+
+func return_to_milkcrate() -> void:
+	if state == State.FLOATING && is_ready:
+		is_ready = false
+		record.return_to_sleeve()
+		prints("fired record.interact_away")
+		var tween = create_tween()
+		tween.set_parallel()
+		tween.tween_property(self, "rotation", Vector3(0, 0, 0), 0.2)\
+				.set_trans(Tween.TRANS_SPRING)
+		tween.tween_property(self, "position", origin_position, 0.7)\
+				.set_trans(Tween.TRANS_BACK)\
+				.set_ease(Tween.EASE_IN_OUT)
+		tween.tween_callback(func(): 
+			updateState(State.UPRIGHT)
+			is_ready = true
+			)
+
+
+
 
 func _process(delta: float) -> void:
 	if !is_ready:

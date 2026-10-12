@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://oygh7wtw1uuw"]
+
+[ext_resource type="PackedScene" uid="uid://bka5em5uvaw8w" path="res://milkcrate.glb" id="1_pjuf3"]
+[ext_resource type="Texture2D" uid="uid://bdh7jboho2v34" path="res://milkcrate_Material Base Color.png" id="2_dpla1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_khdgj"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("2_dpla1")
+
+[node name="milkcrate" unique_id=990855898 instance=ExtResource("1_pjuf3")]
+
+[node name="Cube" parent="." index="0" unique_id=204977285]
+surface_material_override/0 = SubResource("StandardMaterial3D_khdgj")

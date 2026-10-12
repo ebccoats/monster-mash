@@ -110,6 +110,29 @@ I'm keeping a sheet of notes with code snippets I know I will be referring back 
 
 I didn't get to scrolling through the milk crate. I think I will have the records teleport onto the turntables/off the turntables instead of animating them, to start out. I can always go back and animate them if I feel like it after everything is working.
 
+
+#### Day 3
+
+10/12/26 Monday - Last night I worked more on different approaches to making things hover/float.
+
+##### Scroll through albums in milkcrate
+
+Yesterday I made it so the albums handle their own states and know if they're available to be selected, so to make them scrollable I'm going to make a scene-level script that creates an array of albums and sends them their state change instructions when the player scrolls through. 
+
+I need to keep the input handling separate from the actions the inputs trigger, because I want to make a port of the game for the Rcade and I want to make it easy to map those inputs in.
+
+This is a good reason to read about Godot's array methods.
+
+Also, in order to see if scrolling through the albums is working, I need to be able to see the albums. 
+
+![](./assets/milkcrate.png)
+
+I got that working! There's some weird interrupt stuff happening sometimes but I'm not sure what the right approach to locking off interaction is.
+
+##### Put record onto turntable
+
+I'll just teleport the record onto and off of the turntable. What happens to the album covers? I think they should teleport too. 
+
 ##### Next steps:
 
 [ ] Scroll through the records
